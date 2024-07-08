@@ -1,0 +1,64 @@
+<!-- index.wxml -->
+<view class="container">
+	<!-- Header -->
+	<view class="header">
+		<view class="header-button">了解详情</view>
+	</view>
+	<!-- Stats Section -->
+	<view class="stats">
+		<view class="stats-item blue">
+			<view class="stats-item-text">全国报名总人数</view>
+			<view class="stats-item-change">466443</view>
+		</view>
+		<view class="stats-item pink">
+			<view class="stats-item-text">无人报考岗位数</view>
+			<view class="stats-item-change">▼ 4.68%</view>
+		</view>
+		<view class="stats-item green">
+			<view class="stats-item-text">最新岗位竞争比</view>
+			<view class="stats-item-change">13:2</view>
+		</view>
+	</view>
+	<view class="lable">
+		<view>
+			<image class="lable-image" />
+			<text class="lable-text">历年岗位</text>
+		</view>
+		<view>
+			<image class="lable-image1" />
+			<text class="lable-text">各省职位库</text>
+		</view>
+		<view>
+			<image class="lable-image2" />
+			<text class="lable-text">专业查岗</text>
+		</view>
+		<view>
+			<image class="lable-image3" />
+			<text class="lable-text">上岸课程</text>
+		</view>
+	</view>
+	<!-- Assets Section -->
+	<view  wx:for="{{ repairs }}" wx:key="id" bindtap="url" data-url="../../activity/detail/activity_detail?id={{ item.id }}" class="repair-list">
+		<block>
+			<view class="assets">
+				<!-- <view class="assets-header">资产列表</view> -->
+				<view class="repair-item">
+					<view class="repair-header">
+						<text class="repair-title">{{item.title}}</text>
+						<text class="repair-status">{{item.status}}</text>
+					</view>
+					<view class="repair-body">
+						<text class="repair-type">问题类型：{{item.type}}</text>
+						<text class="repair-desc">问题描述：{{item.desc}}</text>
+						<text class="repair-time">提交时间：{{item.time}}</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>
+
+<block wx:if="{{skin.IS_SUB}}">
+	<import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{curMenu:'home_index',returnHome:false}}" />
+</block>

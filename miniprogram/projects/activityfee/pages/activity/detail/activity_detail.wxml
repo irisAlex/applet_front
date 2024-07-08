@@ -1,0 +1,34 @@
+<!-- index.wxml -->
+  <view class="header">
+  <view>
+    <image src="../../../images/data.png" class="header-img"></image>
+    <view class="header-text">岗位详情</view>
+  </view>
+  </view>
+<view class="container">
+  <!-- Assets Section -->
+	<view  wx:for="{{ repairs }}" wx:key="id" bindtap="url" data-url="../../activity/detail/activity_detail?id={{ item.id }}" class="repair-list">
+		<block>
+			<view class="assets">
+				<!-- <view class="assets-header">资产列表</view> -->
+				<view class="repair-item">
+					<view class="repair-header">
+						<text class="repair-title">{{item.title}}</text>
+					</view>
+					<view class="repair-body">
+						<text class="repair-type">问题类型：{{item.type}}</text>
+						<text class="repair-desc">问题描述：{{item.desc}}</text>
+						<text class="repair-time">提交时间：{{item.time}}</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+  </view>
+
+  	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="{{activity.myActivityJoinTag}}" oid="{{activity._id}}" cate="{{activity.ACTIVITY_CATE_NAME}}" title="{{activity.ACTIVITY_TITLE}}" cover="{{activity.ACTIVITY_OBJ.cover[0]}}" qr="{{activity.ACTIVITY_QR}}" desc="查看活动详情" bg="{{skin.PROJECT_COLOR}}">
+		<view class="bottom-line">
+			<view bindtap="bindJoinTap"  class="join bg-project text-white">微信咨询</view>
+			<view bindtap="bindCancelJoinTap"  class="join bg-grey light">电话咨询</view>
+		</view>
+	</cmpt-detail>
